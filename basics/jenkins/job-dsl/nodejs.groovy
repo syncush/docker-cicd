@@ -43,3 +43,25 @@ job('NodeJS Docker example') {
         }
     }
 }
+
+pipelineJob('NodeJS Docker Pipeline') {
+    def repo = 'https://github.com/syncush/docker-cicd.git'
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url(repo)
+                    }
+                    branches('master', '**/features')
+                    extensions {}
+                }
+                scriptPath('./basics/misc/Jenkinsfile')
+            }
+        }
+    }
+    description('Pipeline')
+    triggers {
+        scm('H/5 * * * *')
+    }
+}
