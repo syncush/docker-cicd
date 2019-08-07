@@ -56,7 +56,7 @@ pipelineJob('NodeJS Docker Pipeline') {
                     branches('master', '**/features')
                     extensions {}
                 }
-                scriptPath('./basics/misc/Jenkinsfile')
+                scriptPath('./basics/misc/Jenkinsfile.v2')
             }
         }
     }
